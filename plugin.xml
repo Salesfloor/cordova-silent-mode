@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        id="ca.salesfloor.cordova.plugin.silent-mode"
+        version="0.1">
+
+    <name>SilentMode</name>
+
+    <description>The plugin allow to verify if the phone is currently in silent mode.</description>
+
+    <repo>https://github.com/salesfloor/cordova-silent-mode.git</repo>
+
+    <keywords>appplant, silent mode</keywords>
+
+    <license>Apache 2.0</license>
+
+    <author>Mike Pouliot</author>
+
+    <!-- cordova -->
+    <engines>
+        <engine name="cordova" version=">=3.6.0" />
+    </engines>
+
+    <!-- dependencies -->
+    <dependency id="org.apache.cordova.device" />
+
+    <!-- info -->
+    <info>
+        Not much to say!
+
+        Thank you!
+    </info>
+
+    <!-- js -->
+    <js-module src="www/silent-mode.js" name="SilentMode">
+        <clobbers target="cordova.plugins.silent.mode" />
+        <clobbers target="plugin.silent.mode" />
+    </js-module>
+
+    <!-- ios -->
+    <platform name="ios">
+
+        <dependency id="de.appplant.cordova.common.registerusernotificationsettings" />
+
+        <config-file target="config.xml" parent="/*">
+            <feature name="SilentMode">
+                <param name="ios-package" value="APPSilentMode" onload="true" />
+                <param name="onload" value="true" />
+            </feature>
+        </config-file>
+
+        <header-file src="src/ios/SharkfooMuteSwitchDetector.h" />
+        <source-file src="src/ios/SharkfoodMuteSwitchDetector.m" />
+
+        <header-file src="src/ios/SilentMode.h" />
+        <source-file src="src/ios/SilentMode.m" />
+    </platform>
+
+    <!-- android -->
+    <platform name="android">
+    </platform>
+
+    <!-- windows -->
+    <platform name="windows">
+    </platform>
+
+</plugin>
