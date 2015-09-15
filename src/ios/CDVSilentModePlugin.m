@@ -22,25 +22,26 @@
     WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-var exec = require('cordova/exec');
+#import <Cordova/CDV.h>
+#import "SilentMode.h"
+#import "SharkfoodMuteSwitchDetector.h"
 
-var hasCheckedMute,
-    isMuted;
+@implementation CDVSilentModePlugin
 
-var Plugin = {
-  isMuted: function (callback) {
-    exec(function () {
-      hasCheckedMute = true;
-      isMuted = true;
-      callback && callback(null, true);
-    },
+@synthesize callbackId;
 
-    function () {
-      hasCheckedMute = true;
-      isMuted = false;
-      callback && callback(null, false);
-    }, "SilentMode", "isMuted", []);
+-(void)isMuted:(CDVInvokedUrlCommand*)command {
+  self.callbackId = command.callbackId;
+  CDVPluginResult *result;
+  NSObject *sharkfoodObj = SharkfoodMuteSwitchDetector();
+
+  if (sharkfoodObj.isMute) {
+    result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
+    [self.commandDelegate sendPluginResult:result callbackId: self.callbackId];
+  } else {
+    result = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR];
+    [self.commandDelegate sendPluginResult:result callbackId: self.callbackId];
   }
-};
+}
 
-module.exports = Plugin;
+@end

@@ -1,0 +1,31 @@
+{
+  "name": "cordova-silent-mode-plugin",
+  "version": "0.1.0",
+  "description": "Check if iOS device is in silent mode.",
+  "cordova": {
+    "id": "cordova-silent-mode-plugin",
+    "platforms": [
+      "ios"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Salesfloor/cordova-silent-mode.git"
+  },
+  "keywords": [
+    "ecosystem:cordova",
+    "cordova-ios"
+  ],
+  "engines": [
+    {
+      "name": "cordova",
+      "version": ">=3.6.0"
+    }
+  ],
+  "author": "Salesfloor",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Salesfloor/cordova-silent-mode/issues"
+  },
+  "homepage": "https://github.com/Salesfloor/cordova-silent-mode#readme"
+}
