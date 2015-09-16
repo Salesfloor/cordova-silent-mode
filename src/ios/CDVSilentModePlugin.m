@@ -23,7 +23,7 @@
 */
 
 #import <Cordova/CDV.h>
-#import "SilentMode.h"
+#import "CDVSilentModePlugin.h"
 #import "SharkfoodMuteSwitchDetector.h"
 
 @implementation CDVSilentModePlugin
