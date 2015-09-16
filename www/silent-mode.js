@@ -32,13 +32,13 @@ var Plugin = {
     exec(function () {
       hasCheckedMute = true;
       isMuted = true;
-      callback && callback(null, true);
+      callback && callback(true);
     },
 
     function () {
       hasCheckedMute = true;
       isMuted = false;
-      callback && callback(null, false);
+      callback && callback(false);
     }, "SilentMode", "isMuted", []);
   }
 };
