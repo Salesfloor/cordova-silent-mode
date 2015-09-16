@@ -33,7 +33,7 @@
 -(void)isMuted:(CDVInvokedUrlCommand*)command {
   self.callbackId = command.callbackId;
   CDVPluginResult *result;
-  NSObject *sharkfoodObj = SharkfoodMuteSwitchDetector();
+  SharkfoodMuteSwitchDetector* sharkfoodObj = [SharkfoodMuteSwitchDetector shared];
 
   if (sharkfoodObj.isMute) {
     result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];

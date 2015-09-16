@@ -24,7 +24,6 @@
 
 #import <Foundation/Foundation.h>
 #import <Cordova/CDVPlugin.h>
-#import "SharkfoodMuteSwitchDetector.h"
 
 @interface CDVSilentModePlugin : CDVPlugin
 
