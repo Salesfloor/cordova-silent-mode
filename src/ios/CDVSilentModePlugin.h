@@ -23,12 +23,17 @@
 */
 
 #import <Foundation/Foundation.h>
-#import <Cordova/CDVPlugin.h>
+#import <Cordova/CDV.h>
+#import "SharkfoodMuteSwitchDetector.h"
 
 @interface CDVSilentModePlugin : CDVPlugin
+{
+    SharkfoodMuteSwitchDetector* detector;
+}
 
-@property (nonatomic, strong) IBOutlet NSString *callbackId;
+@property (nonatomic, retain) SharkfoodMuteSwitchDetector* detector;
 
+- (void)init:(CDVInvokedUrlCommand*)command;
 - (void)isMuted:(CDVInvokedUrlCommand*)command;
 
 @end

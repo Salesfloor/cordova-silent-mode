@@ -22,25 +22,16 @@
     WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-var exec = require('cordova/exec');
+function SilentMode() {
+  // Does nothing
+}
 
-var hasCheckedMute,
-    isMuted;
+SilentMode.prototype.init = function(successCallback, errorCallback) {
+  cordova.exec(successCallback, errorCallback, "SilentMode", "init", []);
+}
 
-var Plugin = {
-  isMuted: function (callback) {
-    exec(function () {
-      hasCheckedMute = true;
-      isMuted = true;
-      callback && callback(true);
-    },
+SilentMode.prototype.isMuted = function(successCallback, errorCallback) {
+  cordova.exec(successCallback, errorCallback, "SilentMode", "isMuted", []);
+}
 
-    function () {
-      hasCheckedMute = true;
-      isMuted = false;
-      callback && callback(false);
-    }, "SilentMode", "isMuted", []);
-  }
-};
-
-module.exports = Plugin;
+module.exports = new SilentMode();

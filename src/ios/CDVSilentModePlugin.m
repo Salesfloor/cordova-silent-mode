@@ -22,26 +22,36 @@
     WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#import <Cordova/CDV.h>
 #import "CDVSilentModePlugin.h"
-#import "SharkfoodMuteSwitchDetector.h"
 
 @implementation CDVSilentModePlugin
 
-@synthesize callbackId;
+@synthesize detector;
 
--(void)isMuted:(CDVInvokedUrlCommand*)command {
-  self.callbackId = command.callbackId;
-  CDVPluginResult *result;
-  SharkfoodMuteSwitchDetector* sharkfoodObj = [SharkfoodMuteSwitchDetector shared];
+- (void) init:(CDVInvokedUrlCommand*)command{
+  CDVPluginResult* pluginResult = nil;
 
-  if (sharkfoodObj.isMute) {
-    result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
-    [self.commandDelegate sendPluginResult:result callbackId: self.callbackId];
+  self.detector = [SharkfoodMuteSwitchDetector shared];
+
+  if (self.detector != nil) {
+    pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
   } else {
-    result = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR];
-    [self.commandDelegate sendPluginResult:result callbackId: self.callbackId];
+    pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR];
   }
+
+  [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+}
+
+- (void) isMuted:(CDVInvokedUrlCommand*)command{
+  CDVPluginResult* pluginResult = nil;
+
+  if (self.detector.isMute) {
+    pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
+  } else {
+    pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR];
+  }
+
+  [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
 }
 
 @end
