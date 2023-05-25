@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
-        id="com.salesfloor.silentmodeplugin"
-        version="0.9.0">
+<plugin
+    xmlns="http://apache.org/cordova/ns/plugins/1.0"
+    id="com.salesfloor.silentmodeplugin"
+    version="2.0.0">
 
     <name>SilentMode</name>
 
@@ -28,7 +29,6 @@
 
     <!-- ios -->
     <platform name="ios">
-
         <config-file target="config.xml" parent="/*">
             <feature name="SilentMode">
                 <param name="ios-package" value="CDVSilentModePlugin" />
@@ -42,4 +42,15 @@
         <source-file src="src/ios/CDVSilentModePlugin.m" />
     </platform>
 
+    <platform name="android">
+        <config-file parent="/*" target="res/xml/config.xml">
+            <feature name="SilentMode">
+                <param name="android-package" value="com.cordova.plugins.silentmode.SilentMode" />
+            </feature>
+        </config-file>
+        <source-file 
+            src="src/android/SilentModePlugin.java"
+            target-dir="src/com/cordova/plugins/silentmode"
+        />
+    </platform>
 </plugin>
