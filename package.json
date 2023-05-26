@@ -1,9 +1,9 @@
 {
-  "name": "cordova-salesfloor-silent-mode-plugin",
+  "name": "cordova-silent-mode-plugin-salesfloor",
   "version": "1.0.0",
   "description": "Check if device is in silent mode.",
   "cordova": {
-    "id": "cordova-salesfloor-silent-mode-plugin",
+    "id": "cordova-silent-mode-plugin-salesfloor",
     "platforms": [
       "ios",
       "android"
