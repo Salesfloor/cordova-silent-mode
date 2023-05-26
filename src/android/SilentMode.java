@@ -22,10 +22,10 @@ public class SilentMode extends CordovaPlugin {
     AudioManager am = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
     switch (am.getRingerMode()) {
       case AudioManager.RINGER_MODE_SILENT:
-        callbackContext.success(am.getRingerMode());
+        callbackContext.success();
         break;
       default:
-        callbackContext.error(am.getRingerMode());
+        callbackContext.error();
         break;
     }
   }
