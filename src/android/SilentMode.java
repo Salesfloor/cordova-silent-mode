@@ -25,7 +25,7 @@ public class SilentMode extends CordovaPlugin {
         callbackContext.success();
         break;
       default:
-        callbackContext.error();
+        callbackContext.error("");
         break;
     }
   }
