@@ -50,7 +50,7 @@
         </config-file>
         <source-file 
             src="src/android/SilentModePlugin.java"
-            target-dir="src/com/cordova/plugins/silentmode"
+            target-dir="src/com/cordova/plugins/silentmode/"
         />
     </platform>
 </plugin>
