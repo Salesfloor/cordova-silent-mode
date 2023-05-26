@@ -19,11 +19,14 @@ public class SilentMode extends CordovaPlugin {
 
   private void isMuted(CallbackContext callbackContext) {
     Context context = this.cordova.getActivity().getApplicationContext();
-    AudioManager audioManager = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
-    if (audioManager.getRingerMode() == AudioManager.RINGER_MODE_SILENT) {
-      callbackContext.success();
-    } else {
-      callbackContext.error();
+    AudioManager am = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
+    switch (am.getRingerMode()) {
+      case AudioManager.RINGER_MODE_SILENT:
+        callbackContext.success(am.getRingerMode());
+        break;
+      default:
+        callbackContext.error(am.getRingerMode());
+        break;
     }
   }
 }
