@@ -49,7 +49,7 @@
             </feature>
         </config-file>
         <source-file 
-            src="src/android/SilentModePlugin.java"
+            src="src/android/SilentMode.java"
             target-dir="src/com/cordova/plugins/silentmode/"
         />
     </platform>
